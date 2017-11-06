@@ -1,9 +1,10 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userActions from '../../actions/userActions';
 import UserList from './UserList';
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 
 class UsersPage extends React.Component {
   constructor(props, context){

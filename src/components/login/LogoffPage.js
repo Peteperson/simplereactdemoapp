@@ -1,14 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import * as loginActions from '../../actions/loginActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
 class LogoffPage extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-    }
-
     componentDidMount() {
         this.props.actions.logoffAuth();
         setTimeout(() => { browserHistory.push('/home'); }, 2000);
