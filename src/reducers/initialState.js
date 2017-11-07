@@ -1,8 +1,11 @@
+import authTokenHandler from '../utility/authTokenHandler';
+const token = authTokenHandler.getAuthToken();
+
 export default {
   authors:[],
   courses:[],
   users:[],
   comments:[],
   ajaxCallsInProgress: 0,
-  authenticationData: { authenticated: false }
+  authenticationData: { authenticated: token ? 1 : 0 }
 };

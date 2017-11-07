@@ -30,7 +30,7 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        if (this.props.authData.authenticated === true)
+        if (this.props.authData.authenticated === 1)
             setTimeout(() => { browserHistory.push('/courses'); }, 100);
         return (
             <Form horizontal onSubmit={this.login}
@@ -60,7 +60,7 @@ class LoginPage extends React.Component {
                 <FormGroup>
                     <Col smOffset={2} sm={5}>
                         {this.props.authData.error ? <div className="alert alert-danger">{this.props.authData.error_description}</div> : null}
-                        {this.props.authData.authenticated == null ?
+                        {this.props.authData.authenticated === -1 ?
                             <ProgressBar active now={100} /> : null}
                     </Col>
                 </FormGroup>

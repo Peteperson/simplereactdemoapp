@@ -18,17 +18,17 @@ const Header = ({ loading, authenticated }) => {
           <LinkContainer to="/home">
             <NavItem eventKey={1}>Home</NavItem>
           </LinkContainer>
-          <LinkContainer to="/courses" style={authenticated ? null : { display: 'none' }}>
+          <LinkContainer to="/courses" style={authenticated === 1  ? null : { display: 'none' }}>
             <NavItem eventKey={2}>Courses</NavItem>
           </LinkContainer>
-          <LinkContainer to="/users" style={authenticated ? null : { display: 'none' }}>
+          <LinkContainer to="/users" style={authenticated === 1 ? null : { display: 'none' }}>
             <NavItem eventKey={3}>Users</NavItem>
           </LinkContainer>
-          <LinkContainer to="/comments" style={authenticated ? null : { display: 'none' }}>
+          <LinkContainer to="/comments" style={authenticated === 1 ? null : { display: 'none' }}>
             <NavItem eventKey={4}>Comments</NavItem>
           </LinkContainer>
           <NavDropdown eventKey={5} title="Help" id="basic-nav-dropdown"
-            style={authenticated ? null : { display: 'none' }}>
+            style={authenticated === 1 ? null : { display: 'none' }}>
             <LinkContainer to="/about">
               <MenuItem eventKey={5.1}>About</MenuItem>
             </LinkContainer>
@@ -53,7 +53,7 @@ const Header = ({ loading, authenticated }) => {
           </NavDropdown>
         </Nav>
         <Nav pullRight>
-          {authenticated ? <LinkContainer to="/logoff">
+          {authenticated === 1 ? <LinkContainer to="/logoff">
             <NavItem eventKey={6}>Log off</NavItem>
           </LinkContainer>
             : <LinkContainer to="/login">
@@ -67,7 +67,7 @@ const Header = ({ loading, authenticated }) => {
 
 Header.propTypes = {
   loading: PropTypes.bool.isRequired,
-  authenticated: PropTypes.bool.isRequired
+  authenticated: PropTypes.number.isRequired
 };
 
 export default Header;

@@ -2,6 +2,7 @@ import { take, put, call, apply } from 'redux-saga/effects';
 import fetch from 'isomorphic-fetch';
 import { AUTHENTICATE_BEGIN } from '../actions/actionTypes';
 import { authRecieved } from '../actions/loginActions';
+import authTokenHandler from '../utility/authTokenHandler';
 
 export function* loginSaga() {
     while (true) {
@@ -17,9 +18,12 @@ export function* loginSaga() {
         const response = yield call(fetch, 'http://10.211.108.141/brcperfmonapi/token', requestParams);
         const authData = yield apply(response, response.json);
         if(authData.error)
-            authData.authenticated = false;
-        else
-            authData.authenticated = true;
+            authData.authenticated = 0;
+        else{
+            authData.authenticated = 1;
+            authTokenHandler.storeAuthToken({ access_token: authData.access_token, 
+                                                refresh_token: authData.refresh_token });
+        }
         yield put(authRecieved(authData));
     }
 }
