@@ -4,19 +4,19 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
 const selectRowProp = {
     mode: 'checkbox',
-    bgColor: 'grey',
-    hideSelectColumn: true,
+    bgColor: '#444444',
+    hideSelectColumn: false,
     clickToSelect: true
 }; 
 
-const cellEditProp = { mode: 'click' }; 
+const cellEditProp = { mode: 'dbclick' }; 
 
 const CommentList = ({ comments }) => {
     return (
         <BootstrapTable data={comments} pagination search exportCSV deleteRow insertRow
             selectRow={selectRowProp} cellEdit={cellEditProp}>
             <TableHeaderColumn isKey dataField="id" hidden>Comment ID</TableHeaderColumn>
-            <TableHeaderColumn dataField="name" width="150" dataSort={"true"}
+            <TableHeaderColumn dataField="name" width="250" dataSort={"true"}
                 tdStyle={{ whiteSpace: 'normal' }}>Name</TableHeaderColumn>
             <TableHeaderColumn dataField="body" dataSort={"true"} 
                 tdStyle={{ whiteSpace: 'normal' }}>Message</TableHeaderColumn>
