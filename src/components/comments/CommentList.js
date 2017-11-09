@@ -28,9 +28,9 @@ const CommentList = ({ comments }) => {
             <BootstrapTable data={comments} pagination search exportCSV deleteRow insertRow
                 selectRow={selectRowProp} cellEdit={cellEditProp} options={options}>
                 <TableHeaderColumn isKey dataField="id" hidden>Comment ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name" width="250" dataSort={"true"}
+                <TableHeaderColumn dataField="name" width="250" dataSort={true}
                     tdStyle={{ whiteSpace: 'normal' }}>Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="body" dataSort={"true"} 
+                <TableHeaderColumn dataField="body" dataSort={true} 
                     tdStyle={{ whiteSpace: 'normal' }}>Message</TableHeaderColumn>
             </BootstrapTable>
         </OverlayLoader>
