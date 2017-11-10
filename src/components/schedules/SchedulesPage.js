@@ -13,7 +13,7 @@ class SchedulesPage extends React.Component {
     }
 
     componentWillMount() {
-        // this.props.actions.loadSchedules();
+        this.props.actions.loadSchedules();
     }
 
     redirectToAddSchedulePage() {
@@ -22,6 +22,8 @@ class SchedulesPage extends React.Component {
 
     render() {
         const { schedules } = this.props;
+        if(schedules)
+            console.log(schedules);
         return (
             <div>
                 <h1>Schedules</h1>

@@ -21,8 +21,9 @@ export function* loginSaga() {
             authData.authenticated = 0;
         else{
             authData.authenticated = 1;
-            authTokenHandler.storeAuthToken({ access_token: authData.access_token, 
-                                                refresh_token: authData.refresh_token });
+            // authTokenHandler.storeAuthToken({ access_token: authData.access_token, 
+            //                                     refresh_token: authData.refresh_token });
+            authTokenHandler.storeAuthToken(authData.access_token);
         }
         yield put(authRecieved(authData));
     }

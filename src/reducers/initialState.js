@@ -5,7 +5,8 @@ export default {
   authors:[],
   courses:[],
   users:[],
-  comments:[],
+  comments: [],
+  schedules: [],
   ajaxCallsInProgress: 0,
   authenticationData: { authenticated: token ? 1 : 0 }
 };
