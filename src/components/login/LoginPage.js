@@ -7,7 +7,6 @@ import {
 import * as loginActions from '../../actions/loginActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
 
 class LoginPage extends React.Component {
     constructor(props, context) {
@@ -30,8 +29,6 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        if (this.props.authData.authenticated === 1)
-            setTimeout(() => { browserHistory.push('/courses'); }, 100);
         return (
             <Form horizontal onSubmit={this.login}
                 className="form-login topOffset" role="form" >
@@ -53,7 +50,11 @@ class LoginPage extends React.Component {
 
                 <FormGroup>
                     <Col smOffset={6} sm={5}>
-                        <Button bsStyle="primary" type="submit">Log in</Button>
+                        <div>
+                            <Button bsStyle="primary" 
+                                    disabled={(this.props.authData.authenticated === -1) ? true:false} 
+                                    type="submit">Log in</Button>
+                        </div>
                     </Col>
                 </FormGroup>
 
