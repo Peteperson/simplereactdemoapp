@@ -6,7 +6,7 @@ import { authorizedRequest } from '../utility/restClient';
 export function* getSchedulesSaga() {
     while (true) {
         yield take(GET_SCHEDULE_LIST);
-        const schedsResponse = yield call(authorizedRequest, 'get', '/Schedules/AllSchedulesCut');
+        const schedsResponse = yield call(authorizedRequest, 'get', '/api/Schedules/AllSchedulesCut');
         const scheduleList = yield apply(schedsResponse, schedsResponse.json);
         yield put(schedulesRecieved(scheduleList));
     }

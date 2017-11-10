@@ -3,6 +3,7 @@ import fetch from 'isomorphic-fetch';
 import { AUTHENTICATE_BEGIN } from '../actions/actionTypes';
 import { authRecieved } from '../actions/loginActions';
 import authTokenHandler from '../utility/authTokenHandler';
+import { restApiServer } from '../config';
 
 export function* loginSaga() {
     while (true) {
@@ -15,7 +16,7 @@ export function* loginSaga() {
             method: 'post',
             body: `grant_type=password&username=${act.credentials.username}&password=${act.credentials.password}&client_id=browserId`
         };
-        const response = yield call(fetch, 'http://10.211.108.141/brcperfmonapi/token', requestParams);
+        const response = yield call(fetch, restApiServer + '/token', requestParams);
         const authData = yield apply(response, response.json);
         if(authData.error)
             authData.authenticated = 0;
