@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as scheduleActions from '../../actions/scheduleActions';
-// import ScheduleList from './ScheduleList';
+import ScheduleList from './ScheduleList';
 import { browserHistory } from 'react-router';
 
 class SchedulesPage extends React.Component {
@@ -22,8 +22,6 @@ class SchedulesPage extends React.Component {
 
     render() {
         const { schedules } = this.props;
-        if(schedules)
-            console.log(schedules);
         return (
             <div>
                 <h1>Schedules</h1>
@@ -31,7 +29,7 @@ class SchedulesPage extends React.Component {
                         value="Add schedule"
                         className="btn btn-primary"
                         onClick={this.redirectToAddSchedulePage} /> */}
-                {/* {<ScheduleList schedules={schedules} />} */}
+                {<ScheduleList schedules={schedules} />}
             </div>
         );
     }

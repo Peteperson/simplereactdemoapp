@@ -9,7 +9,7 @@ const Header = ({ loading, authenticated }) => {
     <Navbar>
       <Navbar.Header>
         <Navbar.Brand>
-          <img src={logo} className="logoStyle" />
+          <img src={logo} alt="Eurobank logo" className="logoStyle" />
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>

@@ -10,6 +10,7 @@ import CommentsPage from './components/comments/CommentsPage';
 import SchedulesPage from './components/schedules/SchedulesPage';
 import LoginPage from './components/login/LoginPage';
 import LogoffPage from './components/login/LogoffPage';
+import RefreshTokenPage from './components/login/RefreshTokenPage';
 
 export default (
   <Route path="/" component={App}>
@@ -24,5 +25,6 @@ export default (
     <Route path="login" component={LoginPage} />
     <Route path="logoff" component={LogoffPage} />
     <Route path="about" component={AboutPage} />
+    <Route path="refreshtoken" component={RefreshTokenPage} />
   </Route>
 );

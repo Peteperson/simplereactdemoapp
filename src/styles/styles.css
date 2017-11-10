@@ -23,8 +23,9 @@ nav {
 .topOffset{
   margin-top: 60px;
 }
-/* 
-label, p, h1{
-  color: #AAAAAA !important;
-} */
 
+.refreshToken{
+  height: 200px;
+  line-height: 100px;
+  text-align: center;
+}
