@@ -1,4 +1,4 @@
 export { getUsersSaga } from './getUsersSaga';
 export { getCommentsSaga } from './getCommentsSaga';
-export { getSchedulesSaga } from './getSchedulesSaga';
+export { authorizedRequestSaga } from './authorizedRequestSaga';
 export { loginSaga } from './loginSaga';
