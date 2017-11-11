@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as scheduleActions from '../../actions/scheduleActions';
+import * as restServiceActions from '../../actions/restServiceActions';
 import ScheduleList from './ScheduleList';
 import { browserHistory } from 'react-router';
 
@@ -13,7 +13,7 @@ class SchedulesPage extends React.Component {
     }
 
     componentWillMount() {
-        this.props.actions.loadSchedules();
+        this.props.actions.requestInfo({type: 'get', api: '/api/Schedules/AllSchedulesCut'});
     }
 
     redirectToAddSchedulePage() {
@@ -48,7 +48,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(scheduleActions, dispatch)
+        actions: bindActionCreators(restServiceActions, dispatch)
     };
 }
 

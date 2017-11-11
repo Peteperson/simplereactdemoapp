@@ -1,4 +1,4 @@
-import { put, call } from 'redux-saga/effects';
+import { put, call, apply } from 'redux-saga/effects';
 import fetch from 'isomorphic-fetch';
 import { tokenExpired } from '../actions/generalActions';
 import authTokenHandler from '../utility/authTokenHandler';
@@ -24,9 +24,8 @@ function* baseRequest(method, url, header, authorized) {
     const response = yield call(fetch, url, requestParams);
     console.log(`ok:${response.ok}, status: ${response.status}`);
     if (response.ok) {
-        return response;
+        return yield apply(response, response.json);
     } else if (authorized && response.status === 401) {
-        // Unauthorized
         yield put(tokenExpired());
         throw new Error("Unauthorized access");
     }
