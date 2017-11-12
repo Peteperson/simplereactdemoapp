@@ -11,7 +11,9 @@ import BlockUi from 'react-block-ui';
 import 'react-block-ui/style.css';
 
 function nestedFormatter(cell, row) {
-    return cell.description;
+    if(cell)
+        return cell.description;
+    return '';
 }
 
 const ScheduleList = ({ schedules }) => {

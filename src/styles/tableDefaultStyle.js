@@ -8,7 +8,9 @@ export const selectRowProp = {
 export const searchOptions = { clearSearch: true };
 
 export function defaultDateFormatter(cell, row) {
-    return cell.substring(0, 10);
+    if(cell)
+        return cell.substring(0, 10);
+    return '';
 } 
 
 export const cellEditProp = { mode: 'dbclick' };
