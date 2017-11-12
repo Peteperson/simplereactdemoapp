@@ -4,7 +4,7 @@ import authors from './authorReducer';
 import * as types from '../actions/actionTypes';
 import users from './userReducer';
 import comments from './commentReducer';
-import schedules from './scheduleReducer';
+import authorizedData from './authorizedReducer';
 import initialState from './initialState';
 import ajaxCallsInProgress from './ajaxStatusReducer';
 import authenticationData from './loginReducer';
@@ -14,7 +14,7 @@ const appReducer = combineReducers({
     authors,
     users,
     comments,
-    schedules,
+    authorizedData,
     ajaxCallsInProgress,
     authenticationData
 });

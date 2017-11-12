@@ -6,7 +6,7 @@ export default {
   courses:[],
   users:[],
   comments: [],
-  schedules: [],
+  authorizedData: [],
   ajaxCallsInProgress: 0,
   authenticationData: { authenticated: token ? 1 : 0 }
 };

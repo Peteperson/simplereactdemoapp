@@ -1,10 +1,10 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function scheduleReducer(state = initialState.schedules, action) {
+export default function authorizedReducer(state = initialState.authorizedData, action) {
     switch (action.type) {
         case types.CALL_REST_SERVICE_SUCCESS:
-            return action.scheduleList;
+            return action.responseData;
         default:
             return state;
     }
