@@ -32,7 +32,7 @@ ActiveBranchesPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
     return {
-        actBranches: state.authorizedData
+        actBranches: state.authorizedData.listOfObjects
     };
 }
 
