@@ -42,7 +42,7 @@ SchedulesPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
     return {
-        schedules: state.authorizedData
+        schedules: state.authorizedData.listOfObjects
     };
 }
 
