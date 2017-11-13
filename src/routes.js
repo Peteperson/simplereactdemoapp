@@ -12,6 +12,7 @@ import ActiveBranchesPage from './components/schedules/ActiveBranchesPage';
 import LoginPage from './components/login/LoginPage';
 import LogoffPage from './components/login/LogoffPage';
 import RefreshTokenPage from './components/login/RefreshTokenPage';
+import ScheduleIdPage from './components/schedules/ScheduleIdPage';
 
 export default (
   <Route path="/" component={App}>
@@ -23,6 +24,7 @@ export default (
     <Route path="course/:id" component={ManageCoursePage} />
     <Route path="comments" component={CommentsPage} />
     <Route path="schedules" component={SchedulesPage} />
+    <Route path="schedule/:id" component={ScheduleIdPage} />
     <Route path="actbranches" component={ActiveBranchesPage} />
     <Route path="login" component={LoginPage} />
     <Route path="logoff" component={LogoffPage} />
