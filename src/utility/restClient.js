@@ -2,6 +2,7 @@ import { put, call, apply } from 'redux-saga/effects';
 import fetch from 'isomorphic-fetch';
 import { tokenExpired } from '../actions/generalActions';
 import authTokenHandler from '../utility/authTokenHandler';
+import toastr from 'toastr';
 import {restApiServer} from '../config';
 
 export function authorizedRequest(method, url) {
@@ -20,7 +21,7 @@ function* baseRequest(method, url, header, authorized) {
         headers: header,
         method
     };
-
+    console.log(`Calling url: ${url}`);
     const response = yield call(fetch, url, requestParams);
     console.log(`ok:${response.ok}, status: ${response.status}`);
     if (response.ok) {
@@ -29,5 +30,6 @@ function* baseRequest(method, url, header, authorized) {
         yield put(tokenExpired());
         throw new Error("Unauthorized access");
     }
-    throw new Error(`Error in request: ${url}`);
+    toastr.error(`Error in request: ${url}. Error: ${JSON.stringify(response)}`);
+    throw new Error(`Error in request: ${url}. Error: ${JSON.stringify(response)}`);
 }
