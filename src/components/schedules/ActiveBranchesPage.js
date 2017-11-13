@@ -4,13 +4,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as restServiceActions from '../../actions/restServiceActions';
 import ActiveBranchesList from './ActiveBranchesList';
-import { browserHistory } from 'react-router';
 
 class ActiveBranchesPage extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-    }
-
     componentWillMount() {
         this.props.actions.requestInfo({type: 'get', api: '/api/Views/ActiveBranches'});
     }

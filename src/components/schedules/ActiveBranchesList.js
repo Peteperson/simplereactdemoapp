@@ -4,7 +4,6 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import {
     selectRowProp, 
     searchOptions, 
-    defaultDateFormatter, 
     cellEditProp
 } from '../../styles/tableDefaultStyle'
 import BlockUi from 'react-block-ui';

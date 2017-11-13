@@ -35,7 +35,7 @@ class LoginPage extends React.Component {
                 <FormGroup controlId="formLogin">
                     <Col componentClass={ControlLabel} sm={2}>Username</Col>
                     <Col sm={5}>
-                        <FormControl name="username" required autoFocus onChange={this.handleChange}
+                        <FormControl name="username" required onChange={this.handleChange}
                             className="form-control" value={this.state.username} />
                     </Col>
                 </FormGroup>
