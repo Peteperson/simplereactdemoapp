@@ -9,7 +9,8 @@ import { browserHistory } from 'react-router';
 
 class RefreshTokenPage extends React.Component {
     componentDidMount() {
-        // this.props.actions.logoffAuth();
+        console.log('call refresh action');
+        this.props.actions.refreshAuth();
         // setTimeout(() => { browserHistory.push('/home'); }, 2000);
     }
 
@@ -25,7 +26,7 @@ class RefreshTokenPage extends React.Component {
 }
 
 RefreshTokenPage.propTypes = {
-    //actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -36,7 +37,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        //actions: bindActionCreators(loginActions, dispatch)
+        actions: bindActionCreators(loginActions, dispatch)
     };
 }
 

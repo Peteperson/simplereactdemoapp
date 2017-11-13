@@ -14,6 +14,11 @@ export default function loginReducer(state = initialState.authenticationData, ac
             if (action.authData.authenticated === 1)
                 setTimeout(() => { browserHistory.push('/courses'); }, 100);
             return action.authData;
+        case types.AUTH_REFRESH_END:
+            console.log('AUTH_REFRESH_END');
+            if (action.authData.authenticated === 1)
+                browserHistory.goBack();
+            return action.authData;
         case types.LOGOFF_BEGIN:
             authTokenHandler.clearAuthToken();
             return { authenticated: 0 };
