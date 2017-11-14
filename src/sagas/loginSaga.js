@@ -31,18 +31,16 @@ export function* loginSaga() {
 export function* refreshTokenSaga() {
     while (true) {
         const act = yield take(AUTH_REFRESH_BEGIN);
-        console.log('inside refresh saga');
         const requestParams = {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             method: 'post',
-            body: `grant_type=refresh_token&refresh_token==${authTokenHandler.getRefreshToken()}&client_id=browserId`
+            body: `grant_type=refresh_token&refresh_token=${authTokenHandler.getRefreshToken()}&client_id=browserId`
         };
         const response = yield call(fetch, restApiServer + '/token', requestParams);
         const authData = yield apply(response, response.json);
-        console.log('authData' + authData);
         if (authData.error)
             authData.authenticated = 0;
         else {

@@ -22,14 +22,17 @@ function* baseRequest(method, url, header, authorized) {
         method
     };
     console.log(`Calling url: ${url}`);
-    const response = yield call(fetch, url, requestParams);
-    console.log(`ok:${response.ok}, status: ${response.status}`);
-    if (response.ok) {
-        return yield apply(response, response.json);
-    } else if (authorized && response.status === 401) {
-        yield put(tokenExpired());
-        throw new Error("Unauthorized access");
+    try{
+        const response = yield call(fetch, url, requestParams);
+        console.log(`ok:${response.ok}, status: ${response.status}`);
+        if (response.ok) {
+            return yield apply(response, response.json);
+        } else if (authorized && response.status === 401) {
+            yield put(tokenExpired());
+            throw new Error("Unauthorized access");
+        }
+        throw new Error(`Error in request: ${url}. Error: ${JSON.stringify(response)}`);
+    }catch(err){
+        toastr.error(`Error in request: ${url}. ${err}`);
     }
-    toastr.error(`Error in request: ${url}. Error: ${JSON.stringify(response)}`);
-    throw new Error(`Error in request: ${url}. Error: ${JSON.stringify(response)}`);
 }

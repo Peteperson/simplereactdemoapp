@@ -9,16 +9,19 @@ import { browserHistory } from 'react-router';
 
 class RefreshTokenPage extends React.Component {
     componentDidMount() {
-        console.log('call refresh action');
         this.props.actions.refreshAuth();
-        // setTimeout(() => { browserHistory.push('/home'); }, 2000);
+    }
+
+    componentDidUpdate(){
+        if (this.props.authenticated === 1)
+            browserHistory.goBack();
     }
 
     render() {
         return (
             <div>
-                <BlockUi tag="div" blocking={true}>
-                    <h1 className="refreshToken">Refreshing the token</h1>
+                <BlockUi tag="div" blocking={!this.props.authenticated === 1}>
+                    <h1 className="refreshToken">Please wait, the token is being refreshed...</h1>
                 </BlockUi>
             </div>
         );
@@ -31,7 +34,7 @@ RefreshTokenPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
     return {
-        //authenticated: state.authenticationData.authenticated
+        authenticated: state.authenticationData.authenticated
     };
 }
 

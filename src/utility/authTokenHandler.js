@@ -31,7 +31,7 @@ export default (() => (
       return localStorage.getItem(refreshtokenKey);
     },
 
-    clearAuthToken() {
+    clearAuthTokens() {
       localStorage.removeItem(authtokenKey);
       localStorage.removeItem(refreshtokenKey);
     }
