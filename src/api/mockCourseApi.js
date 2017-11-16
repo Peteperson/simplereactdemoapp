@@ -10,6 +10,7 @@ const courses = [
     watchHref: "http://www.pluralsight.com/courses/react-flux-building-applications",
     authorId: "cory-house",
     length: "5:08",
+    isGood: true,
     category: "JavaScript"
   },
   {
@@ -18,6 +19,7 @@ const courses = [
     watchHref: "http://www.pluralsight.com/courses/writing-clean-code-humans",
     authorId: "cory-house",
     length: "3:10",
+    isGood: false,
     category: "Software Practices"
   },
   {
@@ -26,6 +28,7 @@ const courses = [
     watchHref: "http://www.pluralsight.com/courses/architecting-applications-dotnet",
     authorId: "cory-house",
     length: "2:52",
+    isGood: true,
     category: "Software Architecture"
   },
   {
@@ -34,6 +37,7 @@ const courses = [
     watchHref: "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
     authorId: "cory-house",
     length: "2:30",
+    isGood: false,
     category: "Career"
   },
   {
@@ -42,6 +46,7 @@ const courses = [
     watchHref: "http://www.pluralsight.com/courses/web-components-shadow-dom",
     authorId: "cory-house",
     length: "5:10",
+    isGood: true,
     category: "HTML5"
   }
 ];
