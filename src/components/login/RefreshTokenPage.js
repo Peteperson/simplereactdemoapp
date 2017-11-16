@@ -8,12 +8,12 @@ import { ProgressBar } from 'react-bootstrap';
 
 class RefreshTokenPage extends React.Component {
     componentDidMount() {
-        //this.props.actions.refreshAuth();
+        this.props.actions.refreshAuth();
     }
 
     componentDidUpdate() {
-        // if (this.props.authenticated === 1)
-        //     browserHistory.goBack();
+        if (this.props.authenticated === 1)
+            browserHistory.goBack();
     }
 
     render() {
