@@ -2,27 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import * as loginActions from '../../actions/loginActions';
 import { connect } from 'react-redux';
-import BlockUi from 'react-block-ui';
-import 'react-block-ui/style.css';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
+import { ProgressBar } from 'react-bootstrap';
 
 class RefreshTokenPage extends React.Component {
     componentDidMount() {
-        this.props.actions.refreshAuth();
+        //this.props.actions.refreshAuth();
     }
 
-    componentDidUpdate(){
-        if (this.props.authenticated === 1)
-            browserHistory.goBack();
+    componentDidUpdate() {
+        // if (this.props.authenticated === 1)
+        //     browserHistory.goBack();
     }
 
     render() {
         return (
-            <div>
-                <BlockUi tag="div" blocking={!this.props.authenticated === 1}>
-                    <h1 className="refreshToken">Please wait, the token is being refreshed...</h1>
-                </BlockUi>
+            <div className="row">
+                <div className="col-xs-3"></div>
+                <div className="col-xs-6">
+                    <h3 className="refreshToken">Please wait, the token is being refreshed...</h3>
+                    <ProgressBar active now={100} />
+                </div>
+                <div className="col-xs-3"></div>
             </div>
         );
     }
