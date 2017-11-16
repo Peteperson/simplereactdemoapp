@@ -42,23 +42,16 @@ class ManageCoursePage extends React.Component {
   }
 
   updateCourseState(event) {
-    let field, value;
-    if (event.target) {
-      field = event.target.name;
-      value = event.target.value;
-    }else{
-      field = event.name;
-      value = event.obj.id;
-    }
+    const field = event.target.name;
     let course = Object.assign({}, this.state.course);
-    course[field] = value;
+    course[field] = event.target.value;
     return this.setState({ course: course });
   }
 
   render() {
     return (
       <CourseForm
-        allAuthors={this.props.authors.map(q => { return { id: q.value, name: q.text }; })}
+        allAuthors={this.props.authors.map(q => { return { value: q.value, label: q.text }; })}
         onChange={this.updateCourseState}
         onSave={this.saveCourse}
         course={this.state.course}
