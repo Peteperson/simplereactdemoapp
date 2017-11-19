@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import {
-    Form, FormGroup, Col, FormControl, Button,
-    ControlLabel, ProgressBar
+    Form, FormControl, Button, ControlLabel, ProgressBar
 } from 'react-bootstrap';
 import * as loginActions from '../../actions/loginActions';
 import { connect } from 'react-redux';
@@ -30,42 +29,29 @@ class LoginPage extends React.Component {
 
     render() {
         return (
-            <Form horizontal onSubmit={this.login}
-                className="form-login topOffset" role="form" >
-                <FormGroup controlId="formLogin">
-                    <Col componentClass={ControlLabel} sm={2}>Username</Col>
-                    <Col sm={5}>
+            <div className="row topOffset">
+                <div className="col-sm-4"></div>
+                <div className="col-sm-4">
+                    <Form horizontal onSubmit={this.login} className="form-login" role="form">
+                        <ControlLabel>Username</ControlLabel>
                         <FormControl name="username" required onChange={this.handleChange}
-                            className="form-control" value={this.state.username} />
-                    </Col>
-                </FormGroup>
-
-                <FormGroup controlId="formHorizontalPassword">
-                    <Col componentClass={ControlLabel} sm={2}>Password</Col>
-                    <Col sm={5}>
+                            autoFocus value={this.state.username} />
+                        <br />
+                        <ControlLabel>Password</ControlLabel>
                         <FormControl name="password" type="password" value={this.state.password}
-                            onChange={this.handleChange} className="form-control" required />
-                    </Col>
-                </FormGroup>
-
-                <FormGroup>
-                    <Col smOffset={6} sm={5}>
-                        <div>
-                            <Button bsStyle="primary" 
-                                    disabled={(this.props.authData.authenticated === -1) ? true:false} 
-                                    type="submit">Log in</Button>
-                        </div>
-                    </Col>
-                </FormGroup>
-
-                <FormGroup>
-                    <Col smOffset={2} sm={5}>
+                            onChange={this.handleChange} required />
+                        <br />
+                        <Button bsStyle="primary pull-right"
+                            disabled={(this.props.authData.authenticated === -1) ? true : false}
+                            type="submit">Log in</Button>
+                        <br />
+                        <br />
                         {this.props.authData.error ? <div className="alert alert-danger">{this.props.authData.error_description}</div> : null}
-                        {this.props.authData.authenticated === -1 ?
-                            <ProgressBar active now={100} /> : null}
-                    </Col>
-                </FormGroup>
-            </Form>
+                        {this.props.authData.authenticated === -1 ? <ProgressBar active now={100} /> : null}
+                    </Form>
+                </div>
+                <div className="col-sm-4"></div>
+            </div>
         );
     }
 }

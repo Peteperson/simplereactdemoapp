@@ -5,7 +5,7 @@ import 'react-select/dist/react-select.css';
 
 const SelectInput = ({ name, label, onChange, defaultOption, value, error, options }) => {
   return (
-    <div>
+    <div className='col-lg-3 col-md-4 col-sm-6'>
       <label htmlFor={name}>{label}</label>
       <div>
         <Select
@@ -15,9 +15,10 @@ const SelectInput = ({ name, label, onChange, defaultOption, value, error, optio
           }
           options={options}
           value={value}
-          placeholder="Select Author" />
+          placeholder={defaultOption} />
         {error && <div className="alert alert-danger">{error}</div>}
       </div>
+      <br/>
     </div>
   );
 };

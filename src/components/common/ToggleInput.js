@@ -5,7 +5,7 @@ import '../../styles/toggle.css'
 
 const ToggleInput = ({ name, label, onChange, placeholder, value, error }) => {
     return (
-        <div className="form-group">
+        <div className="col-lg-3 col-md-4 col-sm-6 form-group">
             <label htmlFor={name}>{label}</label>
             <div className="field">
                 <label>

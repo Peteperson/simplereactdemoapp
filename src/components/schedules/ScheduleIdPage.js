@@ -6,9 +6,6 @@ import * as restServiceActions from '../../actions/restServiceActions';
 import Form from "react-jsonschema-form";
 
 const schema = {
-    title: "Todo",
-    type: "object",
-    required: ["title"],
     properties: {
         branchId: { type: "integer", title: "Branch id" },
         id: { type: "integer", title: "id" },
@@ -39,20 +36,20 @@ class ScheduleIdPage extends React.Component {
     }
 
     componentWillMount() {
+        console.log("componentWillMount");
         this.props.actions.requestInfo({ type: 'get', api: '/api/Schedules/' + this.props.scheduleId });
     }
 
     render() {
         const { schedule } = this.props;
+        for (let prop in schema.properties) {
+            if (schema.properties.hasOwnProperty(prop)) {
+                console.log(prop);
+            }
+        }
         return (
             <div>
                 <h1>ScheduleId: {this.props.scheduleId}</h1>
-                <Form schema={schema}
-                    formData={this.props.schedule}
-                    onChange={log("changed")}
-                    onSubmit={log("submitted")}
-                    onError={log("errors")} />
-                {/* {<ScheduleForm schedule={schedule} />} */}
             </div>
         );
     }
