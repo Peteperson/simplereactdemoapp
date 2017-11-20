@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import TextInput from '../common/TextInput';
 import { bindActionCreators } from 'redux';
 import * as restServiceActions from '../../actions/restServiceActions';
+import AutoForm from '../common/AutoForm';
 
 const schema = {
     properties: [
@@ -31,38 +32,36 @@ const schema = {
 class ScheduleIdPage extends React.Component {
     constructor(props, context) {
         super(props, context);
+        this.state = {
+            schedule: Object.assign({}, this.props.schedule),
+            errors: {},
+            saving: false
+        };
+        this.updateState = this.updateState.bind(this);
+        this.onSave = this.onSave.bind(this);
     }
 
     componentWillMount() {
         this.props.actions.requestInfo({ type: 'get', api: '/api/Schedules/' + this.props.scheduleId });
     }
 
+    onSave(event) {
+        event.preventDefault();
+        this.setState({ saving: true });
+    }
+
     updateState(event) {
         const field = event.target.name;
-        let course = Object.assign({}, this.state.course);
-        course[field] = event.target.value;
-        return this.setState({ course: course });
+        let schedule = Object.assign({}, this.props.schedule);
+        schedule[field] = event.target.value;
+        return this.setState({ schedule: schedule });
     }
 
     render() {
         const { schedule } = this.props;
-        let ctrls = [];
-        if (schedule.id) {
-            schema.properties.forEach(function (prop) {
-                if (schedule.hasOwnProperty(prop.name)) {
-                    ctrls.push(prop);
-                } else {
-                    console.log("Problem with property: " + prop.name);
-                }
-            });
-        }
         return (
-            <div>
-                <h1>ScheduleId: {schedule.id}</h1>
-                {ctrls.map((item, i) =>
-                    <TextInput key={i} name={item.name} label={item.title} value={schedule[item.name]} onChange={this.updateState} error={''} />
-                )}
-            </div>
+            <AutoForm title='schedule details' mainObject={schedule} schemaProps={schema.properties} onChange={this.updateState}
+                onSave={this.onSave} saving={this.state.saving} errors={this.state.errors}/>
         );
     }
 }
