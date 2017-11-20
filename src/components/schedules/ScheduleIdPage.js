@@ -31,8 +31,6 @@ const schema = {
 class ScheduleIdPage extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = { controls: [] }
-        this.updateState = this.updateState.bind(this);
     }
 
     componentWillMount() {
