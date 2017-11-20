@@ -1,55 +1,69 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
+import TextInput from '../common/TextInput';
 import { bindActionCreators } from 'redux';
 import * as restServiceActions from '../../actions/restServiceActions';
-import Form from "react-jsonschema-form";
 
 const schema = {
-    properties: {
-        branchId: { type: "integer", title: "Branch id" },
-        id: { type: "integer", title: "id" },
-        dateStamp: { type: "string", format: "date", title: "dateStamp" },
-        noOfEmployees: { type: "integer", title: "No of emp" },
-        source: { type: "integer", title: "Source" },
-        area: { type: "string", title: "Area", default: "" },
-        auditorId: { type: "string", title: "Auditor id", default: "" },
-        auditorName: { type: "string", title: "Auditor name", default: "" },
-        branchDescription: { type: "string", title: "Branch", default: "" },
-        hRissues: { type: "string", title: "HR issues", default: "" },
-        managerName: { type: "string", title: "Manager", default: "" },
-        opportunitiesComments: { type: "string", title: "Opportunities", default: "" },
-        otherComments: { type: "string", title: "Comments", default: "" },
-        rankingComments: { type: "string", title: "Ranking", default: "" },
-        sectorInfo: { type: "string", title: "Sector info", default: "" },
-        strongPointsComments: { type: "string", title: "Strong points", default: "" },
-        threatsComments: { type: "string", title: "Threats", default: "" },
-        weakPointsComments: { type: "string", title: "Weak points", default: "" }
-    }
+    properties: [
+        { name: 'branchId', type: "integer", title: "Branch id" },
+        { name: 'id', type: "integer", title: "id" },
+        { name: 'dateStamp', type: "string", format: "date", title: "dateStamp" },
+        { name: 'noOfEmployees', type: "integer", title: "No of emp" },
+        { name: 'source', type: "integer", title: "Source" },
+        { name: 'area', type: "string", title: "Area", default: "" },
+        { name: 'auditorId', type: "string", title: "Auditor id", default: "" },
+        { name: 'auditorName', type: "string", title: "Auditor name", default: "" },
+        { name: 'branchDescription', type: "string", title: "Branch", default: "" },
+        { name: 'hRissues', type: "string", title: "HR issues", default: "" },
+        { name: 'managerName', type: "string", title: "Manager", default: "" },
+        { name: 'opportunitiesComments', type: "string", title: "Opportunities", default: "" },
+        { name: 'otherComments', type: "string", title: "Comments", default: "" },
+        { name: 'rankingComments', type: "string", title: "Ranking", default: "" },
+        { name: 'sectorInfo', type: "string", title: "Sector info", default: "" },
+        { name: 'strongPointsComments', type: "string", title: "Strong points", default: "" },
+        { name: 'threatsComments', type: "string", title: "Threats", default: "" },
+        { name: 'weakPointsComments', type: "string", title: "Weak points", default: "" }
+    ]
 };
-
-const log = (type) => console.log.bind(console, type);
 
 class ScheduleIdPage extends React.Component {
     constructor(props, context) {
         super(props, context);
+        this.state = { controls: [] }
+        this.updateState = this.updateState.bind(this);
     }
 
     componentWillMount() {
-        console.log("componentWillMount");
         this.props.actions.requestInfo({ type: 'get', api: '/api/Schedules/' + this.props.scheduleId });
+    }
+
+    updateState(event) {
+        const field = event.target.name;
+        let course = Object.assign({}, this.state.course);
+        course[field] = event.target.value;
+        return this.setState({ course: course });
     }
 
     render() {
         const { schedule } = this.props;
-        for (let prop in schema.properties) {
-            if (schema.properties.hasOwnProperty(prop)) {
-                console.log(prop);
-            }
+        let ctrls = [];
+        if (schedule.id) {
+            schema.properties.forEach(function (prop) {
+                if (schedule.hasOwnProperty(prop.name)) {
+                    ctrls.push(prop);
+                } else {
+                    console.log("Problem with property: " + prop.name);
+                }
+            });
         }
         return (
             <div>
-                <h1>ScheduleId: {this.props.scheduleId}</h1>
+                <h1>ScheduleId: {schedule.id}</h1>
+                {ctrls.map((item, i) =>
+                    <TextInput key={i} name={item.name} label={item.title} value={schedule[item.name]} onChange={this.updateState} error={''} />
+                )}
             </div>
         );
     }
