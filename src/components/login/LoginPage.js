@@ -31,8 +31,8 @@ class LoginPage extends React.Component {
         return (
             <div className="row topOffset">
                 <div className="col-sm-4"></div>
-                <div className="col-sm-4">
-                    <Form horizontal onSubmit={this.login} className="form-login" role="form">
+                <div className="col-sm-4" >
+                    <Form horizontal onSubmit={this.login} className="form-login topOffset" role="form">
                         <ControlLabel>Username</ControlLabel>
                         <FormControl name="username" required onChange={this.handleChange}
                             autoFocus value={this.state.username} />

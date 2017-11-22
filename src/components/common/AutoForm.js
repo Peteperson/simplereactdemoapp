@@ -8,6 +8,7 @@ import {returnSmthIfNull} from '../../utility/helper';
 // import ToggleInput from '../common/ToggleInput';
 
 const AutoForm = ({ title, mainObject, schemaProps, onChange, onSave, saving, errors }) => {
+    console.log(mainObject);
     let ctrls = [];
     if (mainObject.id) {
         schemaProps.forEach(function (prop) {
