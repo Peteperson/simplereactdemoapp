@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import TextInput from '../common/TextInput';
 import NumberInput from '../common/NumberInput';
-import _ from 'lodash';
+import DateTimeInput from '../common/DateTimeInput';
+import {returnSmthIfNull} from '../../utility/helper';
 // import SelectInput from '../common/SelectInput';
 // import ToggleInput from '../common/ToggleInput';
 
@@ -22,10 +23,15 @@ const AutoForm = ({ title, mainObject, schemaProps, onChange, onSave, saving, er
             <h1>{title}</h1>
             <div className="row">
                 {schemaProps.map((item, i) => {
-                    if (_.isNumber(mainObject[item.name])){
-                        return <NumberInput key={i} name={item.name} label={item.title} value={mainObject[item.name]} onChange={onChange} error={''} />
-                    }else{
-                        return <TextInput key={i} name={item.name} large={item.large} label={item.title} value={(mainObject[item.name]) ? mainObject[item.name] : ''} onChange={onChange} error={''} />
+                    switch (item.type.toLowerCase()) {
+                        case "string":
+                            return <TextInput key={i} name={item.name} large={item.large} label={item.title} value={returnSmthIfNull(mainObject[item.name], '')} onChange={onChange} error={''} />
+                        case "number":
+                            return <NumberInput key={i} name={item.name} label={item.title} value={returnSmthIfNull(mainObject[item.name], '-1')} onChange={onChange} error={''} />
+                        case "date":
+                            return <DateTimeInput key={i} name={item.name} label={item.title} value={mainObject[item.name]} onChange={onChange} error={''} />
+                        default:
+                            console.log("Invalid type in control '" + item.name +"'");
                     }
                 })}
             </div>

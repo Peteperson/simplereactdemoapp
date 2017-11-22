@@ -7,16 +7,16 @@ import AutoForm from '../common/AutoForm';
 
 const schema = {
     properties: [
-        { name: 'dateStamp', 'large': false, type: "string", format: "date", title: "dateStamp" },
-        { name: 'branchId', 'large': false, type: "integer", title: "Branch id" },
+        { name: 'dateTime', 'large': false, type: "date", title: "dateTime" },
+        { name: 'branchId', 'large': false, type: "number", title: "Branch id" },
         { name: 'branchDescription', 'large': false, type: "string", title: "Branch", default: "" },
-        { name: 'noOfEmployees', 'large': false, type: "integer", title: "No of emp" },
+        { name: 'noOfEmployees', 'large': false, type: "number", title: "No of emp" },
         { name: 'area', 'large': false, type: "string", title: "Area", default: "" },
         { name: 'sectorInfo', 'large': false, type: "string", title: "Sector info", default: "" },
         { name: 'auditorId', 'large': false, type: "string", title: "Auditor id", default: "" },
         { name: 'auditorName', 'large': false, type: "string", title: "Auditor name", default: "" },
         { name: 'managerName', 'large': false, type: "string", title: "Manager", default: "" },
-        { name: 'source', 'large': false, type: "integer", title: "Source" },
+        { name: 'source', 'large': false, type: "number", title: "Source" },
         { name: 'opportunitiesComments', 'large': true, type: "string", title: "Opportunities", default: "" },
         { name: 'rankingComments', 'large': true, type: "string", title: "Ranking", default: "" },
         { name: 'strongPointsComments', 'large': true, type: "string", title: "Strong points", default: "" },
