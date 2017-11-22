@@ -8,7 +8,7 @@ import { FaHome, FaBook, FaUser, FaComment, FaCalendar,
 
 const Header = ({ loading, authenticated }) => {
   return (
-    <Navbar>
+    <Navbar className='navbar-fixed-top'>
       <Navbar.Header>
         <Navbar.Brand>
           <img src={logo} alt="Eurobank logo" className="logoStyle" />
