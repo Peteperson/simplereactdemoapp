@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import courses from './courseReducer';
 import authors from './authorReducer';
+import dictionaries from './dictReducer';
 import * as types from '../actions/actionTypes';
 import users from './userReducer';
 import comments from './commentReducer';
@@ -14,6 +15,7 @@ const appReducer = combineReducers({
     authors,
     users,
     comments,
+    dictionaries,
     authorizedData,
     ajaxCallsInProgress,
     authenticationData

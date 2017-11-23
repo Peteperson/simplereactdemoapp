@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as restServiceActions from '../../actions/restServiceActions';
+import * as dictActions from '../../actions/dictActions';
 import ScheduleList from './ScheduleList';
 import { browserHistory } from 'react-router';
 
@@ -13,7 +14,8 @@ class SchedulesPage extends React.Component {
     }
 
     componentWillMount() {
-        this.props.actions.requestInfo({type: 'get', api: '/api/Schedules/AllSchedulesCut'});
+        this.props.actions.requestInfo({ type: 'get', api: '/api/Schedules/AllSchedulesCut' });
+        this.props.actions2.loadDictionaries({ type: 'get', api: '/api/Views/ScheduleStatus' });
     }
 
     redirectToAddSchedulePage() {
@@ -37,7 +39,8 @@ class SchedulesPage extends React.Component {
 
 SchedulesPage.propTypes = {
     schedules: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    actions2: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -48,7 +51,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(restServiceActions, dispatch)
+        actions: bindActionCreators(restServiceActions, dispatch),
+        actions2: bindActionCreators(dictActions, dispatch)
     };
 }
 
