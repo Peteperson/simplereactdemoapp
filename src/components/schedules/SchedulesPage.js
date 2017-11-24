@@ -15,7 +15,7 @@ class SchedulesPage extends React.Component {
 
     componentWillMount() {
         this.props.actions.requestInfo({ type: 'get', api: '/api/Schedules/AllSchedulesCut' });
-        this.props.actions2.loadDictionaries({ type: 'get', api: '/api/Views/ScheduleStatus' });
+        this.props.actions.loadDictionaries({ type: 'get', api: '/api/Views/ScheduleStatus' });
     }
 
     redirectToAddSchedulePage() {
@@ -27,10 +27,6 @@ class SchedulesPage extends React.Component {
         return (
             <div>
                 <h1>Schedules</h1>
-                {/* <input type="submit"
-                        value="Add schedule"
-                        className="btn btn-primary"
-                        onClick={this.redirectToAddSchedulePage} /> */}
                 {<ScheduleList schedules={schedules} />}
             </div>
         );
@@ -39,8 +35,7 @@ class SchedulesPage extends React.Component {
 
 SchedulesPage.propTypes = {
     schedules: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired,
-    actions2: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -51,8 +46,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(restServiceActions, dispatch),
-        actions2: bindActionCreators(dictActions, dispatch)
+        actions: bindActionCreators({ ...restServiceActions, ...dictActions}, dispatch)
     };
 }
 
