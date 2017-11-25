@@ -5,7 +5,7 @@ export default function dictReducer(state = initialState.dictionaries, action) {
     switch (action.type) {
         case types.GET_DICTIONARIES_STATUSES_SUCCESS:
             const statecopy= Object.assign({}, state);
-            statecopy.statuses = action.statuses;
+            statecopy.statuses = action.statuses.dictList;
             return statecopy;
         default:
             return state;

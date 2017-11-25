@@ -7,6 +7,6 @@ export function* dictionariesSaga() {
     while (true) {
         const req = yield take(GET_DICTIONARIES);
         const dictList = yield call(authorizedRequest, req.requestInfo.type, req.requestInfo.api);
-        yield put(dictionariesRecieved(dictList));
+        yield put(dictionariesRecieved({ dictName: req.dictName, dictList: dictList }));
     }
 }
