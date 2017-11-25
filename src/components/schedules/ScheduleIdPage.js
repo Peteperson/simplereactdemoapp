@@ -85,7 +85,7 @@ function mapStateToProps(state, ownProps) {
    return {
       scheduleId: ownProps.params.id,
       schedule: state.authorizedData.singleObject,
-      statuses: state.dictionaries.map(q => { return { value: q.id, label: q.description }; })
+      statuses: state.dictionaries.statuses.map(q => { return { value: q.id, label: q.description }; })
    };
 }
 

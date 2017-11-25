@@ -6,7 +6,7 @@ export default {
   courses:[],
   users:[],
   comments: [],
-  dictionaries: [],
+  dictionaries: {},
   authorizedData: {listOfObjects:[], singleObject: {}},
   ajaxCallsInProgress: 0,
   authenticationData: { authenticated: token ? 1 : 0 }
