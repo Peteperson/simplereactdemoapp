@@ -37,6 +37,7 @@ class ScheduleIdPage extends React.Component {
    }
 
    updateState(event) {
+      debugger
       const field = event.target.name;
       let schedule = Object.assign({}, this.state.schedule);
       schedule[field] = event.target.value;
@@ -56,7 +57,7 @@ class ScheduleIdPage extends React.Component {
             { name: 'auditorId', 'large': false, type: "string", title: "Auditor id", default: "" },
             { name: 'auditorName', 'large': false, type: "string", title: "Auditor name", default: "" },
             { name: 'managerName', 'large': false, type: "string", title: "Manager", default: "" },
-            { name: 'source', 'large': false, type: "number", title: "Source" },
+            { name: 'source', 'large': false, type: "bool", title: "Source" },
             { name: 'opportunitiesComments', 'large': true, type: "string", title: "Opportunities", default: "" },
             { name: 'rankingComments', 'large': true, type: "string", title: "Ranking", default: "" },
             { name: 'strongPointsComments', 'large': true, type: "string", title: "Strong points", default: "" },

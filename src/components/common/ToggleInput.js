@@ -10,8 +10,7 @@ const ToggleInput = ({ name, label, onChange, placeholder, value, error }) => {
             <div className="field">
                 <label>
                     <Toggle
-                        defaultChecked={value}
-                        value='yes'
+                        checked={value}
                         onChange={
                             (e) => { 
                                 value = !value;
