@@ -41,7 +41,7 @@ class LoginPage extends React.Component {
                         <FormControl name="password" type="password" value={this.state.password}
                             onChange={this.handleChange} required />
                         <br />
-                        <Button bsStyle="primary pull-right"
+                        <Button className="primary pull-right"
                             disabled={(this.props.authData.authenticated === -1) ? true : false}
                             type="submit">Log in</Button>
                         <br />
