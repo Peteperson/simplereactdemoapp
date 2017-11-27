@@ -11,6 +11,7 @@ class ScheduleIdPage extends React.Component {
       this.state = {
          schedule: Object.assign({}, this.props.schedule),
          errors: {},
+         schema: {properties:[]},
          saving: true
       };
       this.updateState = this.updateState.bind(this);
@@ -26,6 +27,28 @@ class ScheduleIdPage extends React.Component {
          this.setState({
             schedule: Object.assign({}, nextProps.schedule),
             errors: {},
+            schema: {
+               properties: [
+                  { name: 'dateTime', 'large': false, type: "date", title: "dateTime" },
+                  { name: 'branchId', 'large': false, type: "number", title: "Branch id" },
+                  { name: 'branchDescription', 'large': false, type: "string", title: "Branch", default: "" },
+                  { name: 'noOfEmployees', 'large': false, type: "number", title: "No of emp" },
+                  { name: 'area', 'large': false, type: "string", title: "Area", default: "" },
+                  { name: 'sectorInfo', 'large': false, type: "string", title: "Sector info", default: "" },
+                  { name: 'auditorId', 'large': false, type: "string", title: "Auditor id", default: "" },
+                  { name: 'auditorName', 'large': false, type: "string", title: "Auditor name", default: "" },
+                  { name: 'managerName', 'large': false, type: "string", title: "Manager", default: "" },
+                  { name: 'source', 'large': false, type: "bool", title: "Source" },
+                  { name: 'opportunitiesComments', 'large': true, type: "string", title: "Opportunities", default: "" },
+                  { name: 'rankingComments', 'large': true, type: "string", title: "Ranking", default: "" },
+                  { name: 'strongPointsComments', 'large': true, type: "string", title: "Strong points", default: "" },
+                  { name: 'threatsComments', 'large': true, type: "string", title: "Threats", default: "" },
+                  { name: 'weakPointsComments', 'large': true, type: "string", title: "Weak points", default: "" },
+                  { name: 'hRissues', 'large': true, type: "string", title: "HR issues", default: "" },
+                  { name: 'otherComments', 'large': true, type: "string", title: "Comments", default: "" },
+                  { name: 'status', 'large': false, type: "list", options: this.props.statuses, title: "Status" }
+               ]
+            },
             saving: false
          });
       }
@@ -37,7 +60,6 @@ class ScheduleIdPage extends React.Component {
    }
 
    updateState(event) {
-      debugger
       const field = event.target.name;
       let schedule = Object.assign({}, this.state.schedule);
       schedule[field] = event.target.value;
@@ -46,28 +68,7 @@ class ScheduleIdPage extends React.Component {
 
    render() {
       const { schedule } = this.state;
-      const schema = {
-         properties: [
-            { name: 'dateTime', 'large': false, type: "date", title: "dateTime" },
-            { name: 'branchId', 'large': false, type: "number", title: "Branch id" },
-            { name: 'branchDescription', 'large': false, type: "string", title: "Branch", default: "" },
-            { name: 'noOfEmployees', 'large': false, type: "number", title: "No of emp" },
-            { name: 'area', 'large': false, type: "string", title: "Area", default: "" },
-            { name: 'sectorInfo', 'large': false, type: "string", title: "Sector info", default: "" },
-            { name: 'auditorId', 'large': false, type: "string", title: "Auditor id", default: "" },
-            { name: 'auditorName', 'large': false, type: "string", title: "Auditor name", default: "" },
-            { name: 'managerName', 'large': false, type: "string", title: "Manager", default: "" },
-            { name: 'source', 'large': false, type: "bool", title: "Source" },
-            { name: 'opportunitiesComments', 'large': true, type: "string", title: "Opportunities", default: "" },
-            { name: 'rankingComments', 'large': true, type: "string", title: "Ranking", default: "" },
-            { name: 'strongPointsComments', 'large': true, type: "string", title: "Strong points", default: "" },
-            { name: 'threatsComments', 'large': true, type: "string", title: "Threats", default: "" },
-            { name: 'weakPointsComments', 'large': true, type: "string", title: "Weak points", default: "" },
-            { name: 'hRissues', 'large': true, type: "string", title: "HR issues", default: "" },
-            { name: 'otherComments', 'large': true, type: "string", title: "Comments", default: "" },
-            { name: 'status', 'large': false, type: "list", options: this.props.statuses, title: "Status" }
-         ]
-      };
+      const { schema } = this.state;
 
       return (
          <AutoForm title='schedule details' mainObject={schedule} schemaProps={schema.properties} onChange={this.updateState}

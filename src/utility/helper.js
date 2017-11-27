@@ -5,7 +5,7 @@ export function returnSmthIfNull(checkedValue, returnedValue) {
 } 
 
 export function convertToBool(value) {
-    if (value === 1 || value === "1")
+    if (value === true || value === 1 || value === "1")
         return true;
     return false;
 }
