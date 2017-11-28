@@ -4,7 +4,7 @@ import { Nav, Navbar, NavDropdown, MenuItem, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import logo from '../../resources/EurobankWin10.png';
 import { FaHome, FaBook, FaUser, FaComment, FaCalendar, 
-         FaShoppingBag, FaQuestion, FaPowerOff, FaLock } from 'react-icons/lib/fa'
+         FaShoppingBag, FaQuestion, FaPowerOff, FaLock, FaGlobe } from 'react-icons/lib/fa'
 
 const Header = ({ loading, authenticated }) => {
   return (
@@ -34,6 +34,9 @@ const Header = ({ loading, authenticated }) => {
           </LinkContainer>
           <LinkContainer to="/actbranches" style={authenticated === 1 ? null : { display: 'none' }}>
             <NavItem eventKey={7}><FaShoppingBag /> Active Brc</NavItem>
+          </LinkContainer>
+          <LinkContainer to="/configs" style={authenticated === 1 ? null : { display: 'none' }}>
+            <NavItem eventKey={8}><FaGlobe /> Configuration</NavItem>
           </LinkContainer>
           <NavDropdown eventKey={5} title="Help" id="basic-nav-dropdown"
             style={authenticated === 1 ? null : { display: 'none' }}>
