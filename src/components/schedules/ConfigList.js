@@ -18,7 +18,7 @@ function nestedFormatter(cell, row) {
 }
 
 function linkFormatter(cell, row) {
-    return <Link to={'/config/' + row.id}>{cell}</Link>;
+    return <Link to={'/config/' + row.name}>{cell}</Link>;
 }
 
 const ScheduleList = ({ configs }) => {

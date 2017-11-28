@@ -10,7 +10,7 @@ import ToggleInput from '../common/ToggleInput';
 const AutoForm = ({ title, mainObject, schemaProps, onChange, onSave, saving, errors }) => {
    console.log(mainObject);
    let ctrls = [];
-   if (mainObject.id) {
+   if (mainObject.id || mainObject.name) {
       schemaProps.forEach(function (prop) {
          if (mainObject.hasOwnProperty(prop.name)) {
             ctrls.push(prop);
@@ -28,7 +28,7 @@ const AutoForm = ({ title, mainObject, schemaProps, onChange, onSave, saving, er
                   case "string":
                      return <TextInput key={i} name={item.name} large={item.large} label={item.title} value={returnSmthIfNull(mainObject[item.name], '')} onChange={onChange} error={''} />
                   case "number":
-                     return <NumberInput key={i} name={item.name} label={item.title} value={returnSmthIfNull(mainObject[item.name], -1)} onChange={onChange} error={''} />
+                     return <NumberInput key={i} name={item.name} label={item.title} value={returnSmthIfNull(mainObject[item.name], '')} onChange={onChange} error={''} />
                   case "date":
                      return <DateTimeInput key={i} name={item.name} label={item.title} value={mainObject[item.name]} onChange={onChange} error={''} />
                   case "list":

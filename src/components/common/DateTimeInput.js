@@ -17,7 +17,7 @@ const DateTimeInput = ({ name, label, onChange, placeholder, value, error }) => 
                 <DatePicker className='form-control'
                     name={name}
                     dateFormat="DD/MM/YYYY"
-                    selected={moment(value)}
+                    selected={value? moment(value):null}
                     onChange={
                         (e) => { onChange({ target: { name: name, value: e._d.toISOString() } }); }
                     } />
