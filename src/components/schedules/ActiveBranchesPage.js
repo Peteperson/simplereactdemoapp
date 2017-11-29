@@ -7,7 +7,7 @@ import ActiveBranchesList from './ActiveBranchesList';
 
 class ActiveBranchesPage extends React.Component {
     componentWillMount() {
-        this.props.actions.requestInfo({type: 'get', api: '/api/Views/ActiveBranches'});
+        this.props.actions.callRequest({type: 'get', api: '/api/Views/ActiveBranches'});
     }
 
     render() {

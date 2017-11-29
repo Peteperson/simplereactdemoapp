@@ -14,7 +14,7 @@ class SchedulesPage extends React.Component {
     }
 
     componentWillMount() {
-        this.props.actions.requestInfo({ type: 'get', api: '/api/Schedules/AllSchedulesCut' });
+        this.props.actions.callRequest({ type: 'get', api: '/api/Schedules/AllSchedulesCut' });
         this.props.actions.loadDictionaries({ name: 'statuses', type: 'get', api: '/api/Views/ScheduleStatus' });
     }
 

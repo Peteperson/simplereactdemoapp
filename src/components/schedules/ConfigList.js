@@ -11,12 +11,6 @@ import BlockUi from 'react-block-ui';
 import 'react-block-ui/style.css';
 import { Link } from 'react-router';
 
-function nestedFormatter(cell, row) {
-    if (cell)
-        return cell.description;
-    return '';
-}
-
 function linkFormatter(cell, row) {
     return <Link to={'/config/' + row.name}>{cell}</Link>;
 }

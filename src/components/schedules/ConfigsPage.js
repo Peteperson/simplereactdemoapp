@@ -3,17 +3,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as restServiceActions from '../../actions/restServiceActions';
-import * as dictActions from '../../actions/dictActions';
 import ConfigList from './ConfigList';
-import { browserHistory } from 'react-router';
 
 class ConfigsPage extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-    }
-
     componentWillMount() {
-        this.props.actions.requestInfo({ type: 'get', api: '/api/Views/Configuration' });
+        this.props.actions.callRequest({ type: 'get', api: '/api/Views/Configuration' });
     }
 
     render() {

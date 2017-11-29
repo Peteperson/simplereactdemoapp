@@ -19,7 +19,7 @@ class ScheduleIdPage extends React.Component {
    }
 
    componentWillMount() {
-      this.props.actions.requestInfo({ type: 'get', api: '/api/Schedules/' + this.props.scheduleId });
+      this.props.actions.callRequest({ type: 'get', api: '/api/Schedules/' + this.props.scheduleId });
    }
 
    componentWillReceiveProps(nextProps) {
