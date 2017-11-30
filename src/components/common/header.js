@@ -23,9 +23,6 @@ const Header = ({ loading, authenticated }) => {
           <LinkContainer to="/courses" style={authenticated === 1  ? null : { display: 'none' }}>
             <NavItem eventKey={2}><FaBook /> Courses</NavItem>
           </LinkContainer>
-          <LinkContainer to="/users" style={authenticated === 1 ? null : { display: 'none' }}>
-            <NavItem eventKey={3}><FaUser /> Users</NavItem>
-          </LinkContainer>
           <LinkContainer to="/comments" style={authenticated === 1 ? null : { display: 'none' }}>
             <NavItem eventKey={4}><FaComment /> Comments</NavItem>
           </LinkContainer>
