@@ -67,9 +67,7 @@ class ScheduleIdPage extends React.Component {
    }
 
    render() {
-      const { schedule } = this.state;
-      const { schema } = this.state;
-
+      const { schedule, schema } = this.state;
       return (
          <AutoForm title='schedule details' mainObject={schedule} schemaProps={schema.properties} onChange={this.updateState}
             onSave={this.onSave} saving={this.state.saving} errors={this.state.errors} />

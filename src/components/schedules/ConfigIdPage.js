@@ -53,9 +53,7 @@ class ConfigIdPage extends React.Component {
     }
 
     render() {
-        const { config } = this.state;
-        const { schema } = this.state;
-
+        const { config, schema } = this.state;
         return (
             <AutoForm title='config details' mainObject={config} schemaProps={schema.properties} onChange={this.updateState}
                 onSave={this.onSave} saving={this.state.saving} errors={this.state.errors} />

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Nav, Navbar, NavDropdown, MenuItem, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import logo from '../../resources/EurobankWin10.png';
-import { FaHome, FaBook, FaUser, FaComment, FaCalendar, 
+import { FaHome, FaBook, FaComment, FaCalendar, 
          FaShoppingBag, FaQuestion, FaPowerOff, FaLock, FaGlobe } from 'react-icons/lib/fa'
 
 const Header = ({ loading, authenticated }) => {
