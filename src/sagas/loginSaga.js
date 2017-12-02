@@ -2,7 +2,6 @@ import { take, put, call, apply } from 'redux-saga/effects';
 import fetch from 'isomorphic-fetch';
 import { AUTHENTICATE_BEGIN, AUTH_REFRESH_BEGIN } from '../actions/actionTypes';
 import { authRecieved, authRefreshed } from '../actions/loginActions';
-import { loadDictionaries } from '../actions/dictActions';
 import authTokenHandler from '../utility/authTokenHandler';
 import toastr from 'toastr';
 import { restApiServer } from '../config';
@@ -26,7 +25,6 @@ export function* loginSaga() {
             else {
                 authData.authenticated = 1;
                 authTokenHandler.storeTokens(authData.access_token, authData.refresh_token);
-                yield put(loadDictionaries({ name: 'statuses', type: 'get', api: '/api/Views/ScheduleStatus' }));
             }
             yield put(authRecieved(authData));
         } catch (err) {
@@ -57,7 +55,6 @@ export function* refreshTokenSaga() {
             else {
                 authData.authenticated = 1;
                 authTokenHandler.storeTokens(authData.access_token, authData.refresh_token);
-                yield put(loadDictionaries({ name: 'statuses', type: 'get', api: '/api/Views/ScheduleStatus' }));
             }
             yield put(authRefreshed(authData));
         } catch (err) {
