@@ -10,7 +10,9 @@ class ConfigIdPage extends React.Component {
       super(props, context);
       this.state = {
          config: Object.assign({}, this.props.config),
-         errors: { stringvalue: 'error djkdskjhkjdfkjdfgkj' },
+         errors: { stringvalue: 'error djkdskjhkjdfkjdfgkj',
+                  name: 'sdfsdfsdfsdf', datevalue: 'kjhsdfkjhsdfkjhsg',
+                  numvalue: 'jhgsdfjkhsdfkjsdf', isCritical: 'kdfgkhfcgkj' },
          schema: {
             properties: [
                { name: 'name', 'large': false, type: "string", title: "Name" },

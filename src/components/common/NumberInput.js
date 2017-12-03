@@ -9,7 +9,7 @@ const NumberInput = ({ name, label, onChange, placeholder, value, error }) => {
     }
 
    const popoverHoverFocus = (
-      <Popover title="Error">{error}</Popover>
+      <Popover id='popid' title="Error">{error}</Popover>
    );
 
     return (

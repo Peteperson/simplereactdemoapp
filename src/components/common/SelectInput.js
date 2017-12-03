@@ -6,7 +6,7 @@ import 'react-select/dist/react-select.css';
 
 const SelectInput = ({ name, label, onChange, defaultOption, value, error, options }) => {
    const popoverHoverFocus = (
-      <Popover title="Error">{error}</Popover>
+      <Popover id='popid' title="Error">{error}</Popover>
    );
 
    return (

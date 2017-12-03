@@ -5,16 +5,21 @@ import '../../styles/toggle.css'
 import { OverlayTrigger, Popover } from 'react-bootstrap'
 
 const ToggleInput = ({ name, label, onChange, placeholder, value, error }) => {
+   let wrapperClass = 'col-lg-3 col-md-4 col-sm-6 form-group';
+   if (error && error.length > 0) {
+      wrapperClass += ' has-error';
+   }
+
    const popoverHoverFocus = (
-      <Popover title="Error">{error}</Popover>
+      <Popover id='popid' title="Error">{error}</Popover>
    );
 
    return (
-      <div className="col-lg-3 col-md-4 col-sm-6 form-group">
+      <div className={wrapperClass}>
          <label htmlFor={name}>{label}</label>
-         <div className="field">
-            <label>
-               <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={error ? popoverHoverFocus : null}>
+            <div className="field">
+            <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={error ? popoverHoverFocus : null}>
+               <label>
                   <Toggle
                      checked={value}
                      onChange={
@@ -24,9 +29,9 @@ const ToggleInput = ({ name, label, onChange, placeholder, value, error }) => {
                         }
                      }
                   />
-               </OverlayTrigger>
-            </label>
-         </div>
+               </label>
+            </OverlayTrigger>
+            </div>
       </div>
    );
 };
