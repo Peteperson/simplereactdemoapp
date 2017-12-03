@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import DatePicker from 'react-datepicker';
 import '../../styles/react-datepicker.css';
+import { OverlayTrigger, Popover } from 'react-bootstrap'
 import moment from 'moment';
 
 const DateTimeInput = ({ name, label, onChange, placeholder, value, error }) => {
@@ -10,10 +11,15 @@ const DateTimeInput = ({ name, label, onChange, placeholder, value, error }) => 
         wrapperClass += ' has-error';
     }
 
+   const popoverHoverFocus = (
+      <Popover title="Error">{error}</Popover>
+   );
+
     return (
         <div className={wrapperClass}>
             <label htmlFor={name}>{label}</label>
             <div className="field">
+             <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={error ? popoverHoverFocus : null}>
                 <DatePicker className='form-control'
                     name={name}
                     dateFormat="DD/MM/YYYY"
@@ -21,8 +27,8 @@ const DateTimeInput = ({ name, label, onChange, placeholder, value, error }) => 
                     onChange={
                         (e) => { onChange({ target: { name: name, value: e._d.toISOString() } }); }
                     } />
-                {error && <div className="alert alert-danger">{error}</div>}
-            </div>
+             </OverlayTrigger>
+           </div>
         </div>
     );
 };

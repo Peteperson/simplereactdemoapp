@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { OverlayTrigger, Popover } from 'react-bootstrap'
 
-const TextInput = ({ name, label, large, onChange, placeholder, value, error }) => {
+const TextAreaInput = ({ name, label, large, onChange, placeholder, value, error }) => {
    let wrapperClass = '';
    if (large)
       wrapperClass = 'col-lg-6 col-md-8 col-sm-12 form-group';
@@ -21,7 +21,7 @@ const TextInput = ({ name, label, large, onChange, placeholder, value, error }) 
          <label htmlFor={name}>{label}</label>
          <div className="field">
             <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={error ? popoverHoverFocus : null}>
-               <input type="text"
+               <textarea rows='4'
                   name={name}
                   onChange={onChange}
                   className="form-control"
@@ -33,7 +33,7 @@ const TextInput = ({ name, label, large, onChange, placeholder, value, error }) 
    );
 };
 
-TextInput.propTypes = {
+TextAreaInput.propTypes = {
    name: PropTypes.string.isRequired,
    label: PropTypes.string.isRequired,
    large: PropTypes.bool.isRequired,
@@ -43,4 +43,4 @@ TextInput.propTypes = {
    error: PropTypes.string
 };
 
-export default TextInput;
+export default TextAreaInput;

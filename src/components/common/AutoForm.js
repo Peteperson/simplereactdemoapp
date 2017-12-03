@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import TextInput from '../common/TextInput';
+import TextAreaInput from '../common/TextAreaInput';
 import NumberInput from '../common/NumberInput';
 import DateTimeInput from '../common/DateTimeInput';
 import { returnSmthIfNull, convertToBool } from '../../utility/helper';
@@ -8,9 +9,9 @@ import SelectInput from '../common/SelectInput';
 import ToggleInput from '../common/ToggleInput';
 
 const AutoForm = ({ title, mainObject, schemaProps, onChange, onSave, saving, errors }) => {
-   console.log(mainObject);
    let ctrls = [];
-   if (mainObject.id || mainObject.name) {
+   if (Object.keys(mainObject).length>0) {
+      console.log(mainObject);
       schemaProps.forEach(function (prop) {
          if (mainObject.hasOwnProperty(prop.name)) {
             ctrls.push(prop);
@@ -26,15 +27,28 @@ const AutoForm = ({ title, mainObject, schemaProps, onChange, onSave, saving, er
             {schemaProps.map((item, i) => {
                switch (item.type.toLowerCase()) {
                   case "string":
-                     return <TextInput key={i} name={item.name} large={item.large} label={item.title} value={returnSmthIfNull(mainObject[item.name], '')} onChange={onChange} error={''} />
+                     return <TextInput key={i} name={item.name} large={item.large} label={item.title}
+                        value={returnSmthIfNull(mainObject[item.name], '')} onChange={onChange}
+                        error={errors[item.name]} />
+                  case "textarea":
+                     return <TextAreaInput key={i} name={item.name} large={item.large} label={item.title}
+                        value={returnSmthIfNull(mainObject[item.name], '')} onChange={onChange}
+                        error={errors[item.name]} />
                   case "number":
-                     return <NumberInput key={i} name={item.name} label={item.title} value={returnSmthIfNull(mainObject[item.name], '')} onChange={onChange} error={''} />
+                     return <NumberInput key={i} name={item.name} label={item.title} 
+                              value={returnSmthIfNull(mainObject[item.name], '')} onChange={onChange} 
+                              error={errors[item.name]} />
                   case "date":
-                     return <DateTimeInput key={i} name={item.name} label={item.title} value={mainObject[item.name]} onChange={onChange} error={''} />
+                     return <DateTimeInput key={i} name={item.name} label={item.title} 
+                              value={mainObject[item.name]} onChange={onChange} error={errors[item.name]} />
                   case "list":
-                     return <SelectInput key={i} name={item.name} options={item.options} label={item.title} value={mainObject[item.name]} onChange={onChange} error={''} />
+                     return <SelectInput key={i} name={item.name} options={item.options} 
+                              label={item.title} value={mainObject[item.name]} onChange={onChange} 
+                              error={errors[item.name]} />
                   case "bool":
-                     return <ToggleInput key={i} name={item.name} label={item.title} value={convertToBool(returnSmthIfNull(mainObject[item.name], 0))} onChange={onChange} error={''} />
+                     return <ToggleInput key={i} name={item.name} label={item.title} 
+                              value={convertToBool(returnSmthIfNull(mainObject[item.name], 0))} 
+                              onChange={onChange} error={errors[item.name]} />
                   default:
                      console.log("Invalid type in control '" + item.name + "'");
                      return null;
