@@ -18,17 +18,29 @@ const DateTimeInput = ({ name, label, onChange, placeholder, value, error }) => 
    return (
       <div className={wrapperClass}>
          <label htmlFor={name}>{label}</label>
-         <OverlayTrigger trigger={['hover', 'focus']} placement="top" overlay={error ? popoverHoverFocus : null}>
-            <div className="field">
-               <DatePicker className='form-control'
-                  name={name}
-                  dateFormat="DD/MM/YYYY"
-                  selected={value ? moment(value) : null}
-                  onChange={
-                     (e) => { onChange({ target: { name: name, value: e._d.toISOString() } }); }
-                  } />
-            </div>
-         </OverlayTrigger>
+         {
+            error ?
+               <OverlayTrigger trigger={['hover', 'focus']} placement="top" overlay={popoverHoverFocus}>
+                  <div className="field">
+                     <DatePicker className='form-control'
+                        name={name}
+                        dateFormat="DD/MM/YYYY"
+                        selected={value ? moment(value) : null}
+                        onChange={
+                           (e) => { onChange({ target: { name: name, value: e._d.toISOString() } }); }
+                        } />
+                  </div>
+               </OverlayTrigger> :
+               <div className="field">
+                  <DatePicker className='form-control'
+                     name={name}
+                     dateFormat="DD/MM/YYYY"
+                     selected={value ? moment(value) : null}
+                     onChange={
+                        (e) => { onChange({ target: { name: name, value: e._d.toISOString() } }); }
+                     } />
+               </div>
+         }
       </div>
    );
 };

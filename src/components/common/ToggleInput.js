@@ -18,19 +18,17 @@ const ToggleInput = ({ name, label, onChange, placeholder, value, error }) => {
       <div className={wrapperClass}>
          <label htmlFor={name}>{label}</label>
             <div className="field">
-            <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={error ? popoverHoverFocus : null}>
-               <label>
-                  <Toggle
-                     checked={value}
-                     onChange={
-                        (e) => {
-                           value = !value;
-                           onChange({ target: { name: name, value: value } });
-                        }
-                     }
-                  />
-               </label>
-            </OverlayTrigger>
+            {
+               error ? 
+                  <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={popoverHoverFocus}>
+                     <label>
+                        <Toggle checked={value} onChange={(e) => { value = !value; onChange({ target: { name: name, value: value } }); }} />
+                     </label>
+                  </OverlayTrigger> :
+                  <label>
+                     <Toggle checked={value} onChange={(e) => { value = !value; onChange({ target: { name: name, value: value } }); }} />
+                  </label>
+            }
             </div>
       </div>
    );

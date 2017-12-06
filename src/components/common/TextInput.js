@@ -20,14 +20,23 @@ const TextInput = ({ name, label, large, onChange, placeholder, value, error }) 
       <div className={wrapperClass}>
          <label htmlFor={name}>{label}</label>
          <div className="field">
-            <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={error ? popoverHoverFocus : null}>
-               <input type="text"
-                  name={name}
-                  onChange={onChange}
-                  className="form-control"
-                  value={value}
-                  placeholder={placeholder} />
-            </OverlayTrigger>
+            {
+               error ?
+                  <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={popoverHoverFocus}>
+                     <input type="text"
+                        name={name}
+                        onChange={onChange}
+                        className="form-control"
+                        value={value}
+                        placeholder={placeholder} />
+                  </OverlayTrigger> :
+                  <input type="text"
+                     name={name}
+                     onChange={onChange}
+                     className="form-control"
+                     value={value}
+                     placeholder={placeholder} />
+            }
          </div>
       </div>
    );

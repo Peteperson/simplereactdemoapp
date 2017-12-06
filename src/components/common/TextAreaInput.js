@@ -20,7 +20,7 @@ const TextAreaInput = ({ name, label, large, onChange, placeholder, value, error
       <div className={wrapperClass}>
          <label htmlFor={name}>{label}</label>
          <div className="field">
-            <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={error ? popoverHoverFocus : null}>
+            <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={popoverHoverFocus}>
                <textarea rows='4'
                   name={name}
                   onChange={onChange}
