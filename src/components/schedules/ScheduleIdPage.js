@@ -11,7 +11,7 @@ class ScheduleIdPage extends React.Component {
       this.state = {
          schedule: Object.assign({}, this.props.schedule),
          errors: {},
-         schema: {properties:[]},
+         schema: { properties: [] },
          saving: true
       };
       this.updateState = this.updateState.bind(this);
@@ -23,7 +23,7 @@ class ScheduleIdPage extends React.Component {
    }
 
    componentWillReceiveProps(nextProps) {
-      if (this.props.schedule.id !== nextProps.schedule.id) {
+      if (nextProps.schedule.id && nextProps.statuses) {
          this.setState({
             schedule: Object.assign({}, nextProps.schedule),
             errors: {},
@@ -46,7 +46,7 @@ class ScheduleIdPage extends React.Component {
                   { name: 'weakPointsComments', 'large': true, type: "string", title: "Weak points", default: "" },
                   { name: 'hRissues', 'large': true, type: "string", title: "HR issues", default: "" },
                   { name: 'otherComments', 'large': true, type: "string", title: "Comments", default: "" },
-                  { name: 'status', 'large': false, type: "list", options: this.props.statuses, title: "Status" }
+                  { name: 'status', 'large': false, type: "list", options: nextProps.statuses, title: "Status" }
                ]
             },
             saving: false
@@ -85,7 +85,7 @@ function mapStateToProps(state, ownProps) {
    return {
       scheduleId: ownProps.params.id,
       schedule: state.authorizedData.singleObject,
-      statuses: state.dictionaries.statuses.map(q => { return { value: q.id, label: q.description }; })
+      statuses: state.dictionaries.statuses ? state.dictionaries.statuses.map(q => { return { value: q.id, label: q.description }; }) : null
    };
 }
 
